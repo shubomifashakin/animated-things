@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", sans-serif;
+}
+
+@layer components {
+  input[type="range"] {
+    @apply rounded-md h-1.5 appearance-none  w-full cursor-pointer overflow-hidden outline-none relative;
+  }
+
+  /* Track: webkit browsers */
+  input[type="range"]::-webkit-slider-runnable-track {
+    @apply bg-rich-black;
+  }
+
+  /* Track: Mozilla Firefox */
+  input[type="range"]::-moz-range-track {
+    @apply bg-rich-black;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    @apply border border-white bg-transparent bg-cover;
+
+    /* background-image: url("https://ibaslogic.github.io/hosted-assets/smile.png"); */
+
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    height: 30px;
+    width: 30px;
+    /* border-radius: 50%; */
+
+    /*  slider progress trick  */
+    transition: box-shadow 0.15s ease;
+    box-shadow: -50px 0 0 50px #fff;
+  }
+}
+
+@keyframes text-slider {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-125%));
+  }
+}
