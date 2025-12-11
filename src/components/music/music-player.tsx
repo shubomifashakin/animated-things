@@ -1,6 +1,7 @@
 import { useDeferredValue, useState } from "react";
-import { AnimatePresence, motion, MotionConfig } from "motion/react";
+
 import useMeasure from "react-use-measure";
+import { AnimatePresence, motion, MotionConfig } from "motion/react";
 
 import { Pause, Play } from "lucide-react";
 
@@ -15,8 +16,6 @@ function formatTime(seconds: number): string {
 }
 
 export default function MusicPlayer() {
-  const [playTime, setPlayTimeValue] = useState(124);
-
   const [playState, setPlayState] = useState(false);
   const [hasLastPlayed, setLastPlayed] = useState(false);
 
@@ -90,9 +89,7 @@ export default function MusicPlayer() {
                     />
                   </span>
 
-                  <span className="text-white text-sm">
-                    {formatTime(playTime)}
-                  </span>
+                  <span className="text-white text-sm">{formatTime(124)}</span>
                 </div>
 
                 {hasLastPlayed && (

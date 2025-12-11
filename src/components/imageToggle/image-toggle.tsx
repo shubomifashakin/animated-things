@@ -14,7 +14,9 @@ export default function ImageToggle({
   const [ref, bounds] = useMeasure({ debounce: 0 });
   const [ref2, bounds2] = useMeasure({ debounce: 0 });
 
-  const deferredHeight = useDeferredValue(bounds2.height);
+  //to prevent abrupt changes i defer the height & only change animate the height of the element when the height has been fully calculated
+  const defHeight = useDeferredValue(bounds.height);
+  const defHeight2 = useDeferredValue(bounds2.height);
 
   const [imageShown, setImageShown] = useState(false);
 
@@ -25,7 +27,7 @@ export default function ImageToggle({
   return (
     <motion.div
       animate={{
-        height: bounds.height ? bounds.height : undefined,
+        height: defHeight,
       }}
       className="rounded-lg border border-stone-500 bg-black text-white overflow-hidden"
       transition={{ type: "spring", bounce: 0.5 }}
@@ -55,7 +57,7 @@ export default function ImageToggle({
           <motion.div
             animate={{
               opacity: 1,
-              height: bounds2.height ? bounds2.height : deferredHeight,
+              height: defHeight2,
             }}
             key={"image-container"}
             initial={{ opacity: 0 }}
